@@ -39,20 +39,34 @@ const services =[
 const ServiceSlider = () => {
   return(
 
-  <Swiper>
+  <Swiper slidesPerView={1} 
+  spaceBetween={30} 
+  navigation={true} 
+  modules= {[Navigation]} 
+  breakpoints={{
+    768: {
+      slidePerView: 2,
+    },
+  }}
+  className='serviceSlider min-h-[680px]'
+  >
     {services.map((service, index) => {
-      return <SwiperSlide key={index}>
-        <Image src={service.image}/>
-        <div>
+      return (
+      <SwiperSlide className='border border-primary/20
+      bg-cream min-h-[560px] rounded-[66px] py-16 px-8'
+       key={index}>
+        <Image className='mb-9' src={service.image}/>
+        <div className='text-[26px] font-medium mb-4'>
           {service.name}
         </div>
-        <div>
+        <div className='text-[20px] mb-8'>
           {service.description}
         </div>
         <button className= 'btn btn-primary'>
           {service.btnText}
           </button>
-      </SwiperSlide>;
+      </SwiperSlide>
+      );
     })}
   </Swiper>
 
